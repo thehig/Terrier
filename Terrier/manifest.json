@@ -1,16 +1,25 @@
 {
   "name": "Terrier",
   "description": "Autocomplete blacknight mail signin with incrementing id",
-  "version": "0.0.0.1",
+  "version": "0.0.0.2",
   "manifest_version": 2,
   "icons": {
     "128": "Mall-Logo_128.png"
   },
-  "browser_action": {
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
     "default_title": "Autofill Blacknight Data",
     "default_popup": "popup.html"
   },
+  "content_scripts": [{
+    "matches": ["https://altmail.blacknight.com/*"],
+    "js": ["extension.js"],
+    "run_at": "document_end"
+  }],
   "permissions": [
-   "activeTab"
+    "tabs"
    ]
 }

@@ -1,1 +1,3 @@
-console.log("popup.js");
+// Will run when you open the popup
+
+console.log("[+] popup.js");
