@@ -15,7 +15,7 @@
     "default_popup": "popup.html"
   },
   "content_scripts": [{
-    "matches": ["https://altmail.blacknight.com/*"],
+    "matches": ["https://altmail.blacknight.com/", "https://altmail.blacknight.com/index.php/mail/auth/logout"],
     "js": ["extension.js"],
     "run_at": "document_end"
   }],
