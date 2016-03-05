@@ -1,10 +1,6 @@
 // Has access to Chrome APIs, but not the content page
 console.log("[+] background.js");
 
-// Incrementing count variable
-localStorage.count = localStorage.count || 0;
-
-
 // Activate pageAction only when on blacknight
 function checkForValidUrl(tabId, changeInfo, tab) {
 	if (tab.url.indexOf('https://altmail.blacknight.com/') == 0)
@@ -21,20 +17,24 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
 		case "autofill": 		// Return the login details for the current count
 			chrome.storage.sync.get({
 				email: 'xbcert$@vonbismark.com',
-				password: 'YOURPASSWORD'
+				password: 'YOURPASSWORD',
+				counter: 0
 			}, function(items){
+				var count = items.counter + 1;
 				var response = {
-					email: items.email.replace('$', localStorage.count++),
+					email: items.email.replace('$', count),
 					password: items.password
 				}
 
-				console.log(response);
-				sendResponse(response);
+				// Update counter in local storage
+				chrome.storage.sync.set({counter: count}, function(){
+					sendResponse(response);
+				});				
 			});
 			break;
 		default:
 			sendResponse({err: "Unrecognised action"});
 	}
-	
+
 	return true;
 });
