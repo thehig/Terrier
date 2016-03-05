@@ -19,12 +19,22 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
 
 	switch(request.action){
 		case "autofill": 		// Return the login details for the current count
-			sendResponse({
-				email: "xbtest" + localStorage.count++ + "@vonbismark.com",
-				password: "YOURPASSWORD"
+			chrome.storage.sync.get({
+				email: 'xbcert$@vonbismark.com',
+				password: 'YOURPASSWORD'
+			}, function(items){
+				var response = {
+					email: items.email.replace('$', localStorage.count++),
+					password: items.password
+				}
+
+				console.log(response);
+				sendResponse(response);
 			});
 			break;
 		default:
 			sendResponse({err: "Unrecognised action"});
 	}
+	
+	return true;
 });

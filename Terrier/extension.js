@@ -3,6 +3,8 @@ console.log("[+] extension.js");
 
 // Populate the dom with the provided options
 function populateInputFields(options){
+	console.log(options);
+
 	var emailInputField = document.querySelector('#email');
 	if(emailInputField) emailInputField.value = options.email;
 
@@ -14,7 +16,10 @@ function populateInputFields(options){
 }
 
 // Broadcast message to the background.js
+console.log("Broadcasting autofill");
 chrome.extension.sendMessage({action: "autofill"}, function(result){
+	console.log("Message result");
+
 	if(result.err)
 		alert(result.err);
 	else

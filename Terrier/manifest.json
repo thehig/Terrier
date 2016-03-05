@@ -11,15 +11,16 @@
     "persistent": false
   },
   "page_action": {
-    "default_title": "Autofill Blacknight Data",
-    "default_popup": "popup.html"
+    "default_title": "Autofill Blacknight Data"
   },
+  "options_page": "options.html",
   "content_scripts": [{
     "matches": ["https://altmail.blacknight.com/", "https://altmail.blacknight.com/index.php/mail/auth/logout"],
     "js": ["extension.js"],
     "run_at": "document_end"
   }],
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
    ]
 }
