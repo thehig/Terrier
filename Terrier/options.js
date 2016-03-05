@@ -25,7 +25,7 @@ function save_options() {
 function restore_options() {
   
   chrome.storage.sync.get({
-    email: 'xbcert$@vonbismark.com',
+    email: 'xbcert$@themallxboxone.com',
     password: 'YOURPASSWORD',
     counter: 0,
     autologin: false

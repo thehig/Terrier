@@ -16,7 +16,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
 	switch(request.action){
 		case "autofill": 		// Return the login details for the current count
 			chrome.storage.sync.get({
-				email: 'xbcert$@vonbismark.com',
+				email: 'xbcert$@themallxboxone.com',
 				password: 'YOURPASSWORD',
 				counter: 0,
 				autologin: false
