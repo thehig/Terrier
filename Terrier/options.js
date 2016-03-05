@@ -2,10 +2,12 @@
 function save_options() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
+  var counter = parseInt(document.getElementById('counter').value);
   
   chrome.storage.sync.set({
     email: email,
-    password: password
+    password: password,
+    counter: counter
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -22,10 +24,12 @@ function restore_options() {
   
   chrome.storage.sync.get({
     email: 'xbcert$@vonbismark.com',
-    password: 'YOURPASSWORD'
+    password: 'YOURPASSWORD',
+    counter: 0
   }, function(items) {
     document.getElementById('email').value = items.email;
     document.getElementById('password').value = items.password;
+    document.getElementById('counter').value = items.counter;
   });
 }
 
