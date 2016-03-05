@@ -3,11 +3,13 @@ function save_options() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
   var counter = parseInt(document.getElementById('counter').value);
+  var autologin = document.getElementById('autologin').checked;
   
   chrome.storage.sync.set({
     email: email,
     password: password,
-    counter: counter
+    counter: counter,
+    autologin: autologin
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -25,11 +27,13 @@ function restore_options() {
   chrome.storage.sync.get({
     email: 'xbcert$@vonbismark.com',
     password: 'YOURPASSWORD',
-    counter: 0
+    counter: 0,
+    autologin: false
   }, function(items) {
     document.getElementById('email').value = items.email;
     document.getElementById('password').value = items.password;
     document.getElementById('counter').value = items.counter;
+    document.getElementById('autologin').checked = items.autologin;
   });
 }
 

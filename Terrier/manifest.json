@@ -1,7 +1,7 @@
 {
   "name": "Terrier",
   "description": "Autocomplete blacknight mail signin with incrementing id",
-  "version": "0.0.0.3",
+  "version": "0.0.1.0",
   "manifest_version": 2,
   "icons": {
     "128": "Mall-Logo_128.png"

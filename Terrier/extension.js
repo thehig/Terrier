@@ -11,8 +11,16 @@ function populateInputFields(options){
 	var passwordInputField = document.querySelector('#password');
 	if(passwordInputField) passwordInputField.value = options.password;
 
-	var loginButton = document.querySelector('#MoreOptions > td > input');
-	// if(loginButton) loginButton.click();
+	if(options.autologin){
+		var loginButton = document.querySelector('#MoreOptions > td > input');
+		if(loginButton) {
+			setTimeout(function(){
+				loginButton.click();		
+			}, 500);			
+		} else {
+			alert("Could not locate login button");
+		}
+	}	
 }
 
 // Broadcast message to the background.js

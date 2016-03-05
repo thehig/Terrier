@@ -18,12 +18,14 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
 			chrome.storage.sync.get({
 				email: 'xbcert$@vonbismark.com',
 				password: 'YOURPASSWORD',
-				counter: 0
+				counter: 0,
+				autologin: false
 			}, function(items){
 				var count = items.counter + 1;
 				var response = {
 					email: items.email.replace('$', count),
-					password: items.password
+					password: items.password,
+					autologin: items.autologin
 				}
 
 				// Update counter in local storage
